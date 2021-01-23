@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock title %}
+{% block header %}
+    {% include "logined_header.html" %}
+{% endblock header %}
+{% block custom_css %}
+<style>
+    p{
+        color:white;
+    };
+    .form-control{
+        max-width: 150px;
+        position: absolute;
+    }
+</style>
+{% endblock custom_css %}
+{% block main_content %}
+<form class='form-signin'   method="POST">
+    <p>Дата встречи</p>
+    <input type="date" class="form-control" id='date_meet' name='date_meet'><br><br>
+    <p>Услуга</p>
+    <select id='service_id' class="form-control" name='service_id'>
+        <option value="empty" selected >Не выбрано</option>
+        {% for service in services  %}
+        <option value="{{ service[0] }}">{{ service[1] }}</option>
+        {% endfor %}
+    </select><br><br>
+    <p>Сотрудник</p>
+    <select id='detective_id' class="form-control" name='detective_id'>
+        <option value="empty" selected >Не выбрано</option>
+        {% for detective in staff  %}
+        <option value="{{ detective[0] }}">{{ detective[1] }}</option>
+        {% endfor %}
+    </select><br><br>
+    <input type="submit" class='btn btn-primary' value="Заказать"><br>
+</form>
+{% endblock main_content %}
+{% block side_script %}
+{% endblock side_script %}

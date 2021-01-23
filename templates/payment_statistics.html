@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock title %}
+{% block header %}
+    {% include "logined_header.html" %}
+{% endblock header %}
+{% block custom_css %}
+<style>
+    p{
+        color:white;
+    };
+    .form-control{
+        max-width: 150px;
+        position: absolute;
+    }
+</style>
+{% endblock custom_css %}
+{% block main_content %}
+<form class='form-signin'   method="POST">
+
+    <p>Дата начала</p>
+    <input type="date" class="form-control" id='begindate' name='begindate'><br><br>
+    
+    <p>Дата конца</p>
+    <input type="date" class="form-control" id='enddate' name='enddate'><br><br>
+    
+    <input type="submit" class='btn btn-primary' value="Поиск"><br>
+</form>
+{% if data != '' %}
+    <table class="table table-dark">
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">ФИО сотрудника</th>
+              <th scope="col">Кол-во дел</th>
+              <th scope="col">Завершенные дела</th>
+              <th scope="col">Кол-во заработанных денег</th>
+            </tr>
+        </thead>
+        {% for row in data %}
+            <tr>
+                <th>{{ row[0] }}</th>
+                <th>{{ row[1] }}</th>
+                <th>{{ row[2] }}</th>
+                <th>{{ row[3] }}</th>
+            </tr>          
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock main_content %}
+{% block side_script %}
+{% endblock side_script %}

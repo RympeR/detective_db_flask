@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock title %}
+{% block header %}
+{% include "logined_header.html" %}
+{% endblock header %}
+{% block custom_css %}
+<style>
+    p {
+        color: white !important;
+    }
+
+    ;
+
+    .form-control {
+        max-width: 150px;
+        position: absolute;
+    }
+</style>
+{% endblock custom_css %}
+{% block main_content %}
+<form class='form-signin' method="POST">
+    <div class="form-group mb-3">
+        <label for='firstname'>Имя</label>
+        <input type="text" class="form-control" id='firstname' name='firstname'>
+    </div>
+    <div class="form-group mb-3">
+        <label for='lastname'>Фамилия</label>
+        <input type="text" class="form-control" id='lastname' name='lastname'>
+    </div>
+    <div class="form-group mb-3">
+        <label for='surname'>Отчество</label>
+        <input type="text" class="form-control" id='surname' name='surname'>
+    </div>
+    <div class="form-group mb-3">
+        <label for='birthday_date'>Дата рождения</label>
+        <input type="text" class="form-control" id='birthday_date' name='birthday_date'>
+    </div>
+    <div class="form-group mb-3">
+        <label for='detective_address'>Адрес</label>
+        <input type="text" class="form-control" id='detective_address' name='detective_address'>
+    </div>
+    <div class="form-group mb-3">
+        <label for='num_passport'>Номер паспорта</label>
+        <input type="text" class="form-control" id='num_passport' name='num_passport'>
+    </div>
+    <div class="form-group mb-3">
+        <label for='height'>Рост</label>
+        <input type="text" class="form-control" id='height' name='height'>
+    </div>
+    <div class="form-group mb-3">
+        <label for='weight'>Вес</label>
+        <input type="text" class="form-control" id='weight' name='weight'>
+    </div>
+
+    <div class="form-group">
+        <label for='_login'>Логин</label>
+        <input type="text" class="form-control" id='_login' name='_login'>
+        <label for='passw'>Пароль</label>
+        <input type="text" class="form-control" id='passw' name='passw'>
+    </div>
+    <input type="submit" class='btn btn-primary' value="Добавить сотрудника">
+</form>
+{% endblock main_content %}
+{% block side_script %}
+{% endblock side_script %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock title %}
+{% block header %}
+    {% include "logined_header.html" %}
+{% endblock header %}
+{% block custom_css %}
+<style>
+    p{
+        color:white;
+    };
+    .form-control{
+        max-width: 150px;
+        position: absolute;
+    }
+</style>
+{% endblock custom_css %}
+{% block main_content %}
+<form class='form-signin'   method="POST">
+    <div class="form-group mb-3">
+        <p>Дело</p>
+        <select id='suspect_id' class="form-control" name='suspect_id'>
+            <option value="empty" selected >Не выбрано</option>
+            {% for suspect in suspects  %}
+            <option value="{{ suspect[5] }}">{{ suspect[3] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <input type="submit" class='btn btn-primary' value="Поиск"><br>
+</form>
+{% if data != '' %}
+    <table class="table table-dark">
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">Описание дела</th>
+              <th scope="col">Статус подозреваемого</th>
+              <th scope="col">ФИО</th>
+              <th scope="col">День рождения</th>
+            </tr>
+        </thead>
+        {% for row in data %}
+            <tr>
+                <th>{{ row[1] }}</th>
+                <th>{{ row[2] }}</th>
+                <th>{{ row[3] }}</th>
+                <th>{{ row[4] }}</th>
+            </tr>          
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock main_content %}
+{% block side_script %}
+{% endblock side_script %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock title %}
+{% block header %}
+    {% include "logined_header.html" %}
+{% endblock header %}
+{% block custom_css %}
+<style>
+    p{
+        color:white;
+    };
+    .form-control{
+        max-width: 150px;
+        position: absolute;
+    }
+</style>
+{% endblock custom_css %}
+{% block main_content %}
+<form class='form-signin' method="POST">
+    <p>День заметки</p>
+    <input type="date" class="form-control" id='note_date' name='note_date'><br><br>
+    <p>Описание</p>
+    <input type="text" class="form-control" id='description' name='description'><br><br>
+    <p>Дело</p>
+    <select id='id_case' class="form-control" name='id_case'>
+        <option value="empty" selected >Не выбрано</option>
+        {% for case in cases  %}
+        <option value="{{ case[0] }}">{{ case[1] }}</option>
+        {% endfor %}
+    </select><br><br>
+    <input type="submit" class='btn btn-primary' value="Добавить заметку"><br>
+</form>
+{% endblock main_content %}
+{% block side_script %}
+{% endblock side_script %}

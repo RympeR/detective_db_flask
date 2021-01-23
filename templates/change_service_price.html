@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock title %}
+{% block header %}
+    {% include "logined_header.html" %}
+{% endblock header %}
+{% block custom_css %}
+<style>
+    p{
+        color:white;
+    };
+    .form-control{
+        max-width: 150px;
+        position: absolute;
+    }
+</style>
+{% endblock custom_css %}
+{% block main_content %}
+<form class='form-signin'   method="POST">
+    <p>Новая цена</p>
+    <input type="text" class="form-control" id='new_price' name='new_price'><br><br>
+    <p>Услуга</p>
+    <select id='service_id' class="form-control" name='service_id'>
+        <option value="empty" selected >Не выбрано</option>
+        {% for service in services  %}
+        <option value="{{ service[0] }}">{{ service[1] }}</option>
+        {% endfor %}
+    </select><br><br>
+    <input type="submit" class='btn btn-primary' value="изменить"><br>
+</form>
+{% endblock main_content %}
+{% block side_script %}
+{% endblock side_script %}

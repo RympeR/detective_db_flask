@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock title %}
+{% block header %}
+    {% include "logined_header.html" %}
+{% endblock header %}
+{% block custom_css %}
+<style>
+    p{
+        color:white;
+    };
+    .form-control{
+        max-width: 150px;
+        position: absolute;
+    }
+</style>
+{% endblock custom_css %}
+{% block main_content %}
+<form  class='form-signin'   method="POST">
+    <p>ФИО</p>
+    <input type="text"  class="form-control" id='fio' name='fio'><br><br>  
+    <p>День рождения</p>
+    <input type="date"  class="form-control" id='dateofbirthday' name='dateofbirthday'><br><br>  
+    <p>Профессия</p>
+    <input type="text"  class="form-control" id='profession' name='profession'><br><br>  
+    <p>Рост</p>
+    <input type="text"  class="form-control" id='hight' name='hight'><br><br>  
+    <p>Вес</p>
+    <input type="text"  class="form-control" id='weight' name='weight'><br><br>  
+    <input type="submit" class='btn btn-primary' value="оформить"><br>
+</form>
+{% if data != '' %}
+<table class="table table-dark">
+    <thead class="thead-dark">
+        <tr>
+          <th scope="col">ФИО</th>
+          <th scope="col">Дата рождения</th>
+          <th scope="col">Профессия</th>
+          <th scope="col">Рост</th>
+          <th scope="col">Вес</th>
+        </tr>
+    </thead>
+    {% for row in data %}
+        <tr>
+            <th>{{ row[0] }}</th>
+            <th>{{ row[1] }}</th>
+            <th>{{ row[2] }}</th>
+            <th>{{ row[3] }}</th>
+            <th>{{ row[4] }}</th>
+        </tr>          
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock main_content %}
+{% block side_script %}
+{% endblock side_script %}

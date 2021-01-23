@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock title %}
+{% block header %}
+    {% include "logined_header.html" %}
+{% endblock header %}
+{% block custom_css %}
+<style>
+    p{
+        color:white;
+    };
+    .form-control{
+        max-width: 150px;
+        position: absolute;
+    }
+</style>
+{% endblock custom_css %}
+{% block main_content %}
+<form class='form-signin'   method="POST">
+
+    <p>Дело</p>
+    <select id='order_id' class="form-control" name='order_id'>
+        <option value="empty" selected >Не выбрано</option>
+        {% for order in orders  %}
+        <option value="{{ order[0] }}">{{ order[1] }}</option>
+        {% endfor %}
+    </select><br><br>
+    <input type="submit" class='btn btn-primary' value="Поиск"><br>
+</form>
+{% if data != '' %}
+    <table class="table table-dark">
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">Дата последней заметки</th>
+              <th scope="col">Название услуги</th>
+              <th scope="col">Описание дела</th>
+              <th scope="col">Статус дела</th>
+            </tr>
+        </thead>
+        {% for row in data %}
+            <tr>
+                <th>{{ row[0] }}</th>
+                <th>{{ row[1] }}</th>
+                <th>{{ row[2] }}</th>
+                <th>{{ row[3] }}</th>
+            </tr>          
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock main_content %}
+{% block side_script %}
+{% endblock side_script %}

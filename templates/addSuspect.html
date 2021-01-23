@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock title %}
+{% block header %}
+    {% include "logined_header.html" %}
+{% endblock header %}
+{% block custom_css %}
+<style>
+    p{
+        color:white;
+    };
+    .form-control{
+        max-width: 150px;
+        position: absolute;
+    }
+</style>
+{% endblock custom_css %}
+{% block main_content %}
+<form class='form-signin'   method="POST">
+    <p>Имя</p>
+    <input type="text" class="form-control" id='firstname' name='firstname'><br><br>
+    <p>Фамилия</p>
+    <input type="text" class="form-control" id='lastname' name='lastname'><br><br>
+    <p>Отчество</p>
+    <input type="text" class="form-control" id='surname' name='surname'><br><br>
+    <p>День роэждения</p>
+    <input type="date" class="form-control" id='birthday_date' name='birthday_date'><br><br>
+    <p>Описание</p>
+    <input type="text" class="form-control" id='description' name='description'><br><br>
+    <p>Профессия</p>
+    <input type="text" class="form-control" id='profession' name='profession'><br><br>
+    <p>Рост</p>
+    <input type="text" class="form-control" id='height' name='height'><br><br>
+    <p>Вес</p>
+    <input type="text" class="form-control" id='weight' name='weight'><br><br>
+    <p>Статус</p>
+    <select id='status' class="form-control" name='status'>
+        <option value="empty" selected >Не выбрано</option>
+        <option value="Не причастен">Не причастен</option>       
+        <option value="Причастен">Причастен</option>       
+        <option value="Не виновен">Не виновен</option>       
+        <option value="Виновен">Виновен</option>       
+    </select><br><br>
+    <p>Дело</p>
+    <select id='id_case' class="form-control" name='id_case'>
+        <option value="empty" selected >Не выбрано</option>
+        {% for case in cases  %}
+        <option value="{{ case[0] }}">{{ case[1] }}</option>
+        {% endfor %}
+    </select><br><br>
+    <input type="submit" class='btn btn-primary' value="изменить"><br>
+</form>
+{% endblock main_content %}
+{% block side_script %}
+{% endblock side_script %}

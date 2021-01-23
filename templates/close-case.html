@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+{% endblock title %}
+{% block header %}
+    {% include "logined_header.html" %}
+{% endblock header %}
+{% block custom_css %}
+<style>
+    p{
+        color:white;
+    };
+    .form-control{
+        max-width: 150px;
+        position: absolute;
+    }
+</style>
+{% endblock custom_css %}
+{% block main_content %}
+<form class='form-signin' method="POST">
+    <p>Дело</p>
+    <select id='id_case' class="form-control" name='id_case'>
+        <option value="empty" selected >Не выбрано</option>
+        {% for case in cases %}
+        <option value="{{ case[0] }}">{{ case[1] }}</option>
+        {% endfor %}
+    </select><br><br>
+    <p>Статус</p>
+    <select id='id_status' class="form-control" name='id_status'>
+        <option value="empty" selected >Не выбрано</option>
+        {% status case in statuses %}
+        <option value="{{ status[0] }}">{{ status[1] }}</option>
+        {% endfor %}
+    </select><br><br>
+    <input type="submit" class='btn btn-primary' value="Закрыть дело"><br>
+</form>
+{% endblock main_content %}
+{% block side_script %}
+{% endblock side_script %}
